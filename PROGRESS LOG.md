@@ -32,3 +32,19 @@
 - Salvaged a potentiometer with switch from an old CB radio
 	- Used this to make a switch to control the brightness of the LED backlight
 	- Works
+- Replaced original incandescent bulb with an orange LED
+	- Added 0.45k resistor in series on anode to limit current through Arduino
+	- Wrapped in reflective foil from a YouFoodz delivery box
+- Wired up L298N motor driver to the ESP8266 and the motor itself
+	- Having issues getting PWM speed control on the `ENA (Enable A)` pin to work
+	- Using the provided jumper cable works, however using the ESP's PWM out seems to not
+	- Works fine with `digitalWrite` instead of `analogWrite` too
+	- Giving up on PWM speed control for now, just gonna use digitalWrite to turn it on or off
+	- All seems to work nice and well :))
+- Discovered that sometimes the ESP needs a bit of "encouragement" with the reset button in order to upload code to it
+- Also discovered that motor positioning is VERY particular
+	- Must get motor in exact right spot to interface with other gears, otherwise doesn't work
+	- Will need to upgrade mount to fix this
+- Upgraded motor mount through extensive use of hot glue and deception
+	- Ziptied motor onto mount
+	- Works a treat
