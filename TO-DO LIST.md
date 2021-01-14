@@ -6,6 +6,10 @@
 	- Continuing the rest of the project
 	- Mounting sensors
 	- Testing sensors
+- Change brightness knob so it controls the brightness of the clock's main orange LED instead of the LCD screen's brightness
+	- LCD's brightness can be controlled by the Arduino digitally
+	- Plus, it's more likely you'll adjust the main brightness for at night and day vs the LCD's
+- Add another resistor in series for the LED so it can be brighter
 
 
 ## Software

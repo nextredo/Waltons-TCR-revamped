@@ -48,3 +48,42 @@
 - Upgraded motor mount through extensive use of hot glue and deception
 	- Ziptied motor onto mount
 	- Works a treat
+	
+## 14/01/2021
+- Made the following modifications to the electronics:
+	- Made I2C bus
+	- Made LCD I2C wiring harness
+	- Made ESP8266 connector for I2C bus
+	- Made joystick connector for ESP8266
+- While attempting to connect the joystick pins to the ESP8266, some googling yielded the following results:
+	- It appears GPIO pins 6-11 are used to connect the ESP chip to the flash chip (where the user program is stored)
+	- I've had difficulty with these pins in the past, and this confirms why
+	- So, I'll be switching to the Arduino Nano instead now
+		- Has more than enough pins for me, so I think I'll give it a go
+	- I'm using [this](https://www.banggood.com/Geekcreit-ATmega328P-Nano-V3-Module-Improved-Version-With-USB-Cable-Development-Board-Geekcreit-for-Arduino-products-that-work-with-official-Arduino-boards-p-933647.html) specific nano board
+		- Requires you download a driver that can be found on the page
+		- After installing the driver I had some slight issues uploading the code, however this was fixed by selecting the old bootloader instead of the new one
+	- Seems to work fine with the blink code, so I've connected the wiring harnesses to it
+		- Also works fine with motor driver testing code - seems I made the right decision
+	- Joystick testing
+		- `digitalRead` on floating pins yields random inputs
+		- So I'm gonna change the COM on the joystick to ground, and have the digital inputs set in `INPUT_PULLUP`
+		- Changed COM to ground, works perfectly now
+			- Used sharpie on COM wire to change it from red to black, so as to indicate that it's grounded
+	- Orange LED testing
+		- Wired up a micro-losi connector between ground and D5 on the nano
+		- Ran a script to scroll through all 255 values of `analogWrite` on that pin
+		- Works perfectly
+	- Connected microswitch
+	- Hotglued various components into place (brightness knob, 
+	- LCD testing
+		- LCD not happy at all
+		- Testing many different libraries to see which ones actually work
+		- After a bit of research I found I had to adjust the potentiometer on th eback to bring the image into focus, seemingly ok now
+		- However library is still dodge, must find a better one
+		- The simple LiquidCrystal_I2C library works perfectly for this project
+			- This is absolutely sick
+	- Added 2 additional resistors in parallel for the main clock light LED
+- Mounted LCD display
+- Changed orientation of joystick so it can actually fit in the housing with the LCD screen
+	
