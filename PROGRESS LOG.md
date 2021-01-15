@@ -105,5 +105,15 @@
 		- Using the I2C scanner it seems the LCD has `address 0x27`
 - Still need to set the clock to the correct date and time
 - However, for now the main physical build of the clock is complete!
-	- Now I just have to code it :))
-	
+- Not so fast - I forgot to add the piezo and speaker
+	- Better do that now
+- Wired speaker positive into D10 and negative to ground through a 225 ohm equivalent resistor
+- Wired piezo to A6 and ground
+- Having difficulty with piezo as a knock sensor
+	- I connected it exactly like the freetronics site specified, however this doesn't seem to be working
+	- It erroneously triggers, apparently due to signal interference in the wires as noted after some googling
+	- I think I'll just turn the side knob into the snooze button instead, and have the piezo as a secondary tone generator
+	- Tried using it as a tone generator, seems to be broken or has a real bad connection
+		- Works fine using D10 for the speaker, not so much for the buzzer though
+- Excellent - all seems in working order
+- Now just gotta code the thing :))
