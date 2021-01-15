@@ -86,4 +86,24 @@
 	- Added 2 additional resistors in parallel for the main clock light LED
 - Mounted LCD display
 - Changed orientation of joystick so it can actually fit in the housing with the LCD screen
+
+## 15/01/2021
+- Discovering issues when attempting to wire in the BMP280 pressure sensor
+	- This sensor uses 3.3v logic on the I2C bus, whereas the LCD uses 5v
+	- Confirmed this with the oscilloscope
+	- Will need to buy a level shifter to overcome this voltage difference
+- Wired up DS3231 RTC module
+	- Using [this](https://github.com/NorthernWidget/DS3231) library to interface with it
+	- DS3231 seems to play nicely with the Arduino, very much appreciated
+- Wired up all components and mounted them in the correct spots
+- Works like a charm
+	- Wiring is a bit ugly but seems ok for now, might improve later when I add the BMP280
+	- DS3231 has a temperature sensor in it so I mightn't even need to add the extra sensor
+	- One strange issue however - the DS3231 shows up with 2 separate I2C addresses, whereas the LCD only has 1
+		- A short google search and a read of [this](https://www.reddit.com/r/arduino/comments/4bo5sr/why_does_my_ds3231_rtc_have_two_unique_i2c/) reddit post later reveals what's going on
+		- Apparently the DS3231 has onboard memory (`AT24C32 - 32k EEPROM at I2C address 0x57`), which can be used independently of the RTC itself (`address 0x68`)
+		- Using the I2C scanner it seems the LCD has `address 0x27`
+- Still need to set the clock to the correct date and time
+- However, for now the main physical build of the clock is complete!
+	- Now I just have to code it :))
 	
