@@ -117,3 +117,49 @@
 		- Works fine using D10 for the speaker, not so much for the buzzer though
 - Excellent - all seems in working order
 - Now just gotta code the thing :))
+
+
+## 18/01/2021
+- Messed around with playing MIDI files on the arduino
+	- Discovered that if I want it to sound any good, I'll need a second buzzer for bass, or to have a microSD reader to store proper songs on
+	- Most likely the microSD reader
+- Messed around with DS3231
+	- Trying new library (RTClib) by Adafruit
+	- Works much better than the lib I was using before - I think I'll stick with this one
+		- Thanks Adafruit! :)
+	- Set RTC to correct time
+
+
+## 19/01/2021
+- More coding for the DS3231
+	- Planning to use interrupts from alarm(2) to trigger when the clock should flip to the next minute
+		- Using this means you can free up the main code to do other stuff while the RTC is doing its thing
+		- Also means you aren't using the delay() function, and so the drift is much less (as delay() can drift about 1 second per day)
+	- Alternatively...
+		- Using the `interrupts1Hz` sketch from the `RTClib` library, we could simply have an ISR run each second to calculate the current time
+		- And use said ISR to count to 60 and trigger the motor once every minute
+			- As well as updating the display?
+				- Or could update the display along with the motor change if not needing seconds count
+			- Although this does sound kinda slow for an ISR, it's better than communicating by I2C every second
+			- Might also cause issues when the alarm uses the same pin?
+	- 2x alternatively...
+		- Set alarms once every minute and use that to flip the clock over
+		- Means you don't get seconds information, but also means the main code has loads more time to do stuff
+	- More on this in `IMPORTANT NOTES.md`
+
+- Tried to code DS3231 and L298N interaction stuff
+	- For some reason, the L298N isn't spinning the motor
+	- Yeah turns out it was on the wrong pins haha OOPS
+	- Also turns out ISR doesn't like making the next alarm or flipping the minute
+	- Changed flip code so that it:
+		- Spins motor while the microswitch is HIGH
+		- Once set LOW it keeps spinning until HIGH again
+		- Spin for a few millis longer than that
+		- End
+		- May need to also have it so it can recover from being stuck with microswitch active
+	- Need to change code so it's on the minute every minute not 60 sec from when it powers on
+		- Get rtc.now() and set next alarm in x seconds when it reaches 00
+		- OR use alarm mode `DS3231_A1_Second ` to do it when seconds match and set seconds to 00
+		- Even better, use `alarm(2)` and mode `DS3231_A2_PerMinute` to get an alarm every minute
+- Coded it so DS3231 works with L298N
+	- Added part of this into `MAIN_CODE.ino`

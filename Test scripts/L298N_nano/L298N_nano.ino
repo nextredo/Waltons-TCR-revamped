@@ -1,7 +1,7 @@
 
-#define IN1 2 //D2
-#define IN2 4 //D4
-#define ENA 3 //D3
+#define IN1 7 //D2
+#define IN2 8 //D4
+#define ENA 6 //D3
 
 int lmao;
 

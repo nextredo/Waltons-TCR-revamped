@@ -21,7 +21,7 @@
 */
 
 #include "pitches.h"
-#define speakerPin 9 //D9 or D10
+#define speakerPin 10 //D10
 
 // notes in the melody:
 int melody[] = {
