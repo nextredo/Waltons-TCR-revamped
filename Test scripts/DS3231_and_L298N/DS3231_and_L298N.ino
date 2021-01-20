@@ -57,12 +57,12 @@ void setup() {
   
   // schedule an alarm 10 seconds in the future
   if(!rtc.setAlarm2(
-        returnSecondsAlarm,
+        returnSecondsAlarm(),
         DS3231_A2_PerMinute // this mode triggers the alarm when the seconds match. See Doxygen for other options
   )) {
     Serial.println("Error, alarm wasn't set!");
   }else {
-    Serial.println("Alarm will happen in 10 seconds!");  
+    Serial.println("Alarm set");  
   }
 
 
@@ -107,7 +107,7 @@ void loop() {
   if(rtc.alarmFired(2)) {
     rtc.clearAlarm(2);
     Serial.println("Alarm cleared");
-    setNextAlarm();
+    //setNextAlarm();
     flipMinute();
   }
     
@@ -164,7 +164,7 @@ void setNextAlarm() {
 
 
 
-DateTime returnSecondsAlarm() {
+DateTime returnSecondsAlarm() { // this doesn't even work lmao
   DateTime now = rtc.now();
 
   DateTime output(

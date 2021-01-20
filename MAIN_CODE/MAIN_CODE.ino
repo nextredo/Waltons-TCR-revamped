@@ -35,6 +35,7 @@ void setup() {
   //rtc.disableAlarm(2);
 
   // set first alarm (for when clock should flip)
+  // don't need to include func to return current time
   
 }
 

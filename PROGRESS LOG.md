@@ -163,3 +163,14 @@
 		- Even better, use `alarm(2)` and mode `DS3231_A2_PerMinute` to get an alarm every minute
 - Coded it so DS3231 works with L298N
 	- Added part of this into `MAIN_CODE.ino`
+	
+
+## 20/01/2021
+- Discovered the Arduino Nano has 1024 bytes of EEPROM onboard
+	- This could be useful for remembering user settings once I get around to implementing them
+- Going to try and hook the DS3231 up to the LCD today
+	- Works perfectly
+	- I had a bit of trouble at the start as I forgot to include `pinMode()` and `digitalWrite()` setup commands for the L298N and microswitch
+	- Works fine now though
+- Messed around with MIDI stuff more
+	- Fun but if I actually want a decent song to play, I need to put an SD adapter on the Arduino
