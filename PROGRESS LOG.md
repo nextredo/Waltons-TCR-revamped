@@ -174,3 +174,11 @@
 	- Works fine now though
 - Messed around with MIDI stuff more
 	- Fun but if I actually want a decent song to play, I need to put an SD adapter on the Arduino
+	
+
+## 22/01/2021
+- Watched a 50-minute video about PlatformIO (a VS Code extension for embedded C++ development)
+	- Going to migrate main code over to this format for ease of use
+- Tested the `setBacklight()` function
+	- Only accepts either `0` or `1` - can't adjust the brightness of the LCD's backlight, only toggle it
+- 

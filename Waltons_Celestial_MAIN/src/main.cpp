@@ -1,25 +1,35 @@
-// **********************************************************
-// RTC
-#include <RTClib.h>
-RTC_DS3231 rtc;
-#define CLOCK_INTERRUPT_PIN 2
-//#define nextAlarmDelay 10
-char daysOfTheWeek[7][12] = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
+#include <Arduino.h>
 
-// **********************************************************
-// LCD
+#include <RTClib.h>
 #include <Wire.h> 
 #include <LiquidCrystal_I2C.h>
+
+// function definitions (so the compiler knows they exist and doesn't freak out)
+// functions can be found at bottom of file
+void updateLCD();
+String getTimeStr(DateTime now);
+String getDateStr(DateTime now);
+String getTempStr();
+String AMPM(DateTime now);
+String leadingZeros(String input);
+void onAlarm();
+void flipMinute();
+void setAlarm2PerMinute();
+
+// RTC **********************************************************
+RTC_DS3231 rtc;
+#define CLOCK_INTERRUPT_PIN 2
+char daysOfTheWeek[7][12] = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
+
+// LCD **********************************************************
 LiquidCrystal_I2C lcd(0x27,20,4); // set the LCD address to 0x27 for a 16 chars and 2 line display
 
-// **********************************************************
-// L298N
+// L298N ********************************************************
 #define IN1 7 // D7, direction pin 1
 #define IN2 8 // D8, direction pin 2
 #define ENA 6 // D6, enable pin (PWM)
 
-// **********************************************************
-// microswitch
+// microswitch **************************************************
 #define microswitchPin 12 // D12, active low
 #define motorDelay 350 // F() macro means var stored in progmem instead of RAM
 
