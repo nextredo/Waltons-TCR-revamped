@@ -181,4 +181,23 @@
 	- Going to migrate main code over to this format for ease of use
 - Tested the `setBacklight()` function
 	- Only accepts either `0` or `1` - can't adjust the brightness of the LCD's backlight, only toggle it
-- 
+
+
+## 03/03/2021
+- Been a while
+- Wired in microSD reader
+	- Found an old unmarked 1GB microSD
+	- Flashed with [this](https://www.sdcard.org/downloads/formatter/) tool
+- Opened simple test sketch for the pre-installed SD library
+	- Doesn't work (naturally)
+		- After much debugging and windows explorer deciding to superheat and consequently brick a 32gb card full of data, I found why it wasn't working
+		- Turns out it simply didn't like the card I was using
+			- After plugging in a different (16GB) card, it seemed perfectly happy to read the files off it
+	- Had to steal that 16GB card from my DSi, guess I don't use that much anyways ¯\_(ツ)_/¯
+		- FAT32
+	- Works!
+		- But extremely quiet
+			- Will need a proper amp for this speaker if it's to be an alarm
+	- Followed [this](https://maker.pro/arduino/projects/arduino-audio-player) article to get the speaker going properly
+- Also plugged in a buzzer to D9 and ran a little test script on it
+	- Seems to work fine
