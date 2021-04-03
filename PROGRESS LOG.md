@@ -201,3 +201,10 @@
 	- Followed [this](https://maker.pro/arduino/projects/arduino-audio-player) article to get the speaker going properly
 - Also plugged in a buzzer to D9 and ran a little test script on it
 	- Seems to work fine
+	
+	
+## 02/04/2021
+- Began work on the motor mount
+	- Completed solidworks file for the part
+	- Exported as STL and begun printing
+	- Print finished without a hitch

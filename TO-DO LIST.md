@@ -2,7 +2,6 @@
 - Add BMP280
 - Add piezo #2 for secondary component of sound
 	- Or for knock detection for alarm snooze button
-- Add microSD card reader so I can play music from it for an alarm
 - Add digital potentiometer for speaker volume
 	- Even better - just get a speaker amp the Ardu can talk to
 		- Yeah nah you're going to *NEED* a little speaker amp because the arduino simply can't push enough current
